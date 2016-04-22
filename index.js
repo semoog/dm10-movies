@@ -2,6 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
+var config = require('./config.json');
+
 var moviesController = require('./controllers/movies_controller');
 var moviesPolicies = require('./policies/movies_policies');
 
@@ -14,7 +16,7 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 app.use(session({
-  secret: 'nw74c38as34',
+  secret: config.sessionSecret,
   saveUninitialized: true,
   resave: true
 }));
